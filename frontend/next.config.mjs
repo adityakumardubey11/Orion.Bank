@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Production optimizations
-  output: 'standalone', // For Docker deployment
+  // Vercel deployment optimizations
   experimental: {
     serverComponentsExternalPackages: ['mongoose'], // If needed for backend calls
   },
