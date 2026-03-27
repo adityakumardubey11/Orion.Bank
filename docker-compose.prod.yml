@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: banking-mongo-prod
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: banking-backend-prod
+    restart: always
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/bankingdb?authSource=admin
+      FRONTEND_URI: ${FRONTEND_URI}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    container_name: banking-frontend-prod
+    restart: always
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      NEXT_PUBLIC_BASE_URI: http://${BACKEND_HOST:-backend}:8000/api/v1
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
