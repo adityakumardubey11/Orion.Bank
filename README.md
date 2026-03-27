@@ -1,4 +1,4 @@
-# ORION BANK APPLICATION 🏦
+# ORION BANK 🏦
 
 ## Tech Stack
 - **Frontend**: Next.js 15 (App Router), TailwindCSS, Redux, React Query
