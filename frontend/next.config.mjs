@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Vercel deployment optimizations
+  // Railway deployment optimizations
   experimental: {
-    serverComponentsExternalPackages: ['mongoose'], // If needed for backend calls
+    serverComponentsExternalPackages: ['mongoose'],
   },
   env: {
     NEXT_PUBLIC_BASE_URI: process.env.NEXT_PUBLIC_BASE_URI || 'http://localhost:8000/api/v1',
