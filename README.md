@@ -1,4 +1,4 @@
-# Kono Banking Application 🏦
+# ORION BANK APPLICATION 🏦
 
 ## Tech Stack
 - **Frontend**: Next.js 15 (App Router), TailwindCSS, Redux, React Query
